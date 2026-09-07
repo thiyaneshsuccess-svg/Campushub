@@ -1,0 +1,100 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #f5f7fb;
+  color: #1f2937;
+}
+
+.app {
+  min-height: 100vh;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 40px;
+  background: rgb(195, 132, 255);
+  border-bottom: 1px solid #8100a1;
+}
+
+.navbar h1 {
+  margin: 0;
+}
+
+nav {
+  display: flex;
+  gap: 25px;
+}
+
+nav a {
+  text-decoration: none;
+  color: #1f012b;
+}
+
+.main-content {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 50px 30px;
+}
+
+.welcome h2 {
+  margin-bottom: 8px;
+}
+
+.welcome p {
+  color: #6b7280;
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin-top: 35px;
+}
+
+.stat-card {
+  background: white;
+  padding: 25px;
+  border-radius: 12px;
+  border: 1px solid #e5e7eb;
+}
+
+.stat-card h3 {
+  font-size: 32px;
+  margin: 0 0 8px;
+}
+
+.stat-card p {
+  margin: 0;
+  color: #6b7280;
+}
+
+.recent-tasks {
+  margin-top: 40px;
+  background: white;
+  padding: 25px;
+  border-radius: 12px;
+  border: 1px solid #e5e7eb;
+}
+
+.task-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 15px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.task-item p {
+  margin: 0;
+}
+
+.task-item.completed p {
+  text-decoration: line-through;
+  color: #888;
+}
