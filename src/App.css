@@ -98,3 +98,10 @@ nav a {
   text-decoration: line-through;
   color: #888;
 }
+.task-checkbox {
+  border: none;
+  background: none;
+  font-size: 20px;
+  cursor: pointer;
+  padding: 0;
+}

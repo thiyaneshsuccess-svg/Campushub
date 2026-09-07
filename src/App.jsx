@@ -1,5 +1,6 @@
 import './App.css'
 import Navbar from './components/Navbar'
+import { useState } from "react";
 
 function App() {
   const [tasks, setTasks] = useState([
@@ -19,6 +20,16 @@ function App() {
     completed: true
   }
 ])
+  function toggleTask(id) {
+  setTasks(
+    tasks.map((task) =>
+      task.id === id
+        ? { ...task, completed: !task.completed }
+        : task
+    )
+  )
+}
+
   return (
     <div className="app">
       <Navbar />
@@ -54,7 +65,12 @@ function App() {
               key={task.id}
               className={`task-item ${task.completed ? 'completed' : ''}`}
             >
-              <span>{task.completed ? '☑' : '□'}</span>
+              <button
+              className="task-checkbox"
+              onClick={() => toggleTask(task.id)}
+            >
+              {task.completed ? '☑' : '□'}
+            </button>
               <p>{task.title}</p>
             </div>
           ))}
