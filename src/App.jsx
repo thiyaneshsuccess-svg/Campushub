@@ -28,7 +28,14 @@ function App() {
         : task
     )
   )
-}
+}   
+  const totalTasks = tasks.length
+
+  const completedTasks = tasks.filter(
+    (task) => task.completed
+  ).length
+
+  const pendingTasks = totalTasks - completedTasks
 
   return (
     <div className="app">
@@ -42,17 +49,17 @@ function App() {
 
         <section className="stats">
           <div className="stat-card">
-            <h3>8</h3>
+            <h3>{totalTasks}</h3>
             <p>Total Tasks</p>
           </div>
 
           <div className="stat-card">
-            <h3>5</h3>
+            <h3>{pendingTasks}</h3>
             <p>Pending</p>
           </div>
 
           <div className="stat-card">
-            <h3>3</h3>
+            <h3>{completedTasks}</h3>
             <p>Completed</p>
           </div>
         </section>
