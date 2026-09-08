@@ -1,6 +1,9 @@
 import './App.css'
 import Navbar from './components/Navbar'
 import { useState, useEffect } from 'react'
+import TaskItem from './components/TaskItem'
+import TaskForm from './components/TaskForm'
+import TaskFilters from './components/TaskFilters'
 
 function App() {
   const [tasks, setTasks] = useState(() => {
@@ -35,14 +38,15 @@ function App() {
   
    
   function toggleTask(id) {
-  setTasks(
-    tasks.map((task) =>
+  setTasks((prevTasks) =>
+    prevTasks.map((task) =>
       task.id === id
         ? { ...task, completed: !task.completed }
         : task
     )
   )
-} 
+}
+
   let filteredTasks = tasks
 
   if (filter === 'pending') {
@@ -75,9 +79,7 @@ function App() {
   setNewTask('')
 }
   function deleteTask(id) {
-  setTasks(
-    tasks.filter((task) => task.id !== id)
-  )
+  setTasks((prevTasks) => prevTasks.filter((task) => task.id !== id))
 }
 
   const pendingTasks = totalTasks - completedTasks
@@ -87,25 +89,13 @@ function App() {
       <Navbar />
 
       <main className="main-content">
-        <section className="add-task">
-          <input
-            type="text"
-            placeholder="Add a new task..."
-            value={newTask}
-            onChange={(event) => setNewTask(event.target.value)}
-          />
-
-          <input
-            type="date"
-            value={dueDate}
-            onChange={(event) => setDueDate(event.target.value)}
-          />
-
-          <button onClick={addTask}>
-            Add Task
-          </button>
-        </section>
-
+        <TaskForm
+        newTask={newTask}
+        setNewTask={setNewTask}
+        dueDate={dueDate}
+        setDueDate={setDueDate}
+        addTask={addTask}
+      />
         <section className="welcome">
           <h2>Welcome back 👋</h2>
           <p>Here's what's happening with your college work.</p>
@@ -127,52 +117,24 @@ function App() {
             <p>Completed</p>
           </div>
         </section>
-        <div className="task-filters">
-          <button  className={filter === 'all' ? 'active' : ''}
-          onClick={() => setFilter('all')}>
-            All
-          </button>
+        <TaskFilters
+          filter={filter}
+          setFilter={setFilter}
+        />
 
-          <button  className={filter === 'pending' ? 'active' : ''}
-          onClick={() => setFilter('pending')}>
-            Pending
-          </button>
-
-          <button  className={filter === 'completed' ? 'active' : ''}
-          onClick={() => setFilter('completed')}>
-            Completed
-          </button>
-        </div>
         <section className="recent-tasks">
           <h2>Recent Tasks</h2>
 
           {filteredTasks.map((task) => (
-            <div
-              key={task.id}
-              className={`task-item ${task.completed ? 'completed' : ''}`}
-            >
-              <button
-              className="task-checkbox"
-              onClick={() => toggleTask(task.id)}
-            >
-              {task.completed ? '☑' : '□'}
-            </button>
-              <div>
-                <p>{task.title}</p>
-
-                {task.dueDate && (
-                  <small>Due: {task.dueDate}</small>
-                )}
-              </div> 
-             
-              <button
-                className="delete-button"
-                onClick={() => deleteTask(task.id)}
-              >
-                Delete
-              </button>
-            </div>
-          ))}
+          <TaskItem
+            key={task.id}
+            task={task}
+            toggleTask={toggleTask}
+            deleteTask={deleteTask}
+          />
+        ))}
+  
+            
         </section>
       </main>
     </div>
