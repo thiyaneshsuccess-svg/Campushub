@@ -146,3 +146,9 @@ nav a {
   background: #2563eb;
   color: white;
 }
+.task-item small {
+  display: block;
+  margin-top: 4px;
+  color: #6b7280;
+  font-size: 13px;
+}

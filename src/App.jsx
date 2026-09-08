@@ -27,6 +27,7 @@ function App() {
       ]
 })
   const [newTask, setNewTask] = useState('')
+  const [dueDate, setDueDate] = useState('')
   const [filter, setFilter] = useState('all')
   useEffect(() => {
   localStorage.setItem('tasks', JSON.stringify(tasks))
@@ -65,7 +66,9 @@ function App() {
   const task = {
     id: Date.now(),
     title: newTask,
-    completed: false
+    completed: false,
+    dueDate: dueDate
+
   }
 
   setTasks([...tasks, task])
@@ -85,17 +88,24 @@ function App() {
 
       <main className="main-content">
         <section className="add-task">
-        <input
-          type="text"
-          placeholder="Add a new task..."
-          value={newTask}
-          onChange={(event) => setNewTask(event.target.value)}
-        />
+          <input
+            type="text"
+            placeholder="Add a new task..."
+            value={newTask}
+            onChange={(event) => setNewTask(event.target.value)}
+          />
 
-        <button onClick={addTask}>
-          Add Task
-        </button>
+          <input
+            type="date"
+            value={dueDate}
+            onChange={(event) => setDueDate(event.target.value)}
+          />
+
+          <button onClick={addTask}>
+            Add Task
+          </button>
         </section>
+
         <section className="welcome">
           <h2>Welcome back 👋</h2>
           <p>Here's what's happening with your college work.</p>
@@ -147,7 +157,14 @@ function App() {
             >
               {task.completed ? '☑' : '□'}
             </button>
-              <p>{task.title}</p>
+              <div>
+                <p>{task.title}</p>
+
+                {task.dueDate && (
+                  <small>Due: {task.dueDate}</small>
+                )}
+              </div> 
+             
               <button
                 className="delete-button"
                 onClick={() => deleteTask(task.id)}
