@@ -7,23 +7,29 @@ function ResourceForm({
 }) {
   return (
     <section className="resource-form">
+
       <input
         type="text"
         placeholder="Resource title..."
         value={newResource}
-        onChange={(event) => setNewResource(event.target.value)}
+        onChange={(event) =>
+          setNewResource(event.target.value)
+        }
       />
 
       <input
         type="url"
         placeholder="Resource URL..."
         value={resourceUrl}
-        onChange={(event) => setResourceUrl(event.target.value)}
+        onChange={(event) =>
+          setResourceUrl(event.target.value)
+        }
       />
 
       <button onClick={addResource}>
         Add Resource
       </button>
+
     </section>
   )
 }

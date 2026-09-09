@@ -1,6 +1,7 @@
 function TaskFilters({ filter, setFilter }) {
   return (
     <div className="task-filters">
+
       <button
         className={filter === 'all' ? 'active' : ''}
         onClick={() => setFilter('all')}
@@ -21,6 +22,7 @@ function TaskFilters({ filter, setFilter }) {
       >
         Completed
       </button>
+
     </div>
   )
 }

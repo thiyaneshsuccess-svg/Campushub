@@ -9,17 +9,25 @@ body {
   color: #1f2937;
 }
 
+button,
+input,
+select {
+  font-family: inherit;
+}
+
 .app {
   min-height: 100vh;
 }
+
+/* Navbar */
 
 .navbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 20px 40px;
-  background: rgb(195, 132, 255);
-  border-bottom: 1px solid #8100a1;
+  background: rgb(181, 124, 235);
+  border-bottom: 1px solid #e5e7eb;
 }
 
 .navbar h1 {
@@ -33,14 +41,41 @@ nav {
 
 nav a {
   text-decoration: none;
-  color: #1f012b;
+  color: #374151;
+  padding: 8px 4px;
 }
+
+nav a:hover {
+  color: #2563eb;
+}
+
+nav a.active {
+  color: #2563eb;
+  font-weight: bold;
+}
+
+/* Main */
 
 .main-content {
   max-width: 1100px;
   margin: 0 auto;
   padding: 50px 30px;
 }
+
+.page-header {
+  margin-bottom: 25px;
+}
+
+.page-header h2 {
+  margin-bottom: 8px;
+}
+
+.page-header p {
+  color: #6b7280;
+  margin: 0;
+}
+
+/* Welcome */
 
 .welcome h2 {
   margin-bottom: 8px;
@@ -49,6 +84,8 @@ nav a {
 .welcome p {
   color: #6b7280;
 }
+
+/* Stats */
 
 .stats {
   display: grid;
@@ -74,6 +111,8 @@ nav a {
   color: #6b7280;
 }
 
+/* Tasks */
+
 .recent-tasks {
   margin-top: 40px;
   background: white;
@@ -90,14 +129,30 @@ nav a {
   border-bottom: 1px solid #eee;
 }
 
+.task-item:last-child {
+  border-bottom: none;
+}
+
 .task-item p {
   margin: 0;
+}
+
+.task-content {
+  flex: 1;
+}
+
+.task-content small {
+  display: block;
+  margin-top: 4px;
+  color: #6b7280;
+  font-size: 13px;
 }
 
 .task-item.completed p {
   text-decoration: line-through;
   color: #888;
 }
+
 .task-checkbox {
   border: none;
   background: none;
@@ -105,10 +160,30 @@ nav a {
   cursor: pointer;
   padding: 0;
 }
+
+.delete-button,
+.resource-item button,
+.timetable-item button {
+  border: none;
+  background: #ef4444;
+  color: white;
+  padding: 7px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.delete-button:hover,
+.resource-item button:hover,
+.timetable-item button:hover {
+  opacity: 0.85;
+}
+
+/* Task form */
+
 .add-task {
   display: flex;
   gap: 10px;
-  margin-top: 30px;
+  margin-top: 20px;
 }
 
 .add-task input {
@@ -119,7 +194,9 @@ nav a {
   font-size: 16px;
 }
 
-.add-task button {
+.add-task button,
+.resource-form button,
+.timetable-form button {
   padding: 12px 20px;
   border: none;
   border-radius: 8px;
@@ -128,6 +205,19 @@ nav a {
   color: white;
   font-size: 16px;
 }
+
+.add-task button:hover,
+.resource-form button:hover,
+.timetable-form button:hover {
+  opacity: 0.9;
+}
+
+.add-task input[type="date"] {
+  flex: 0 1 180px;
+}
+
+/* Filters */
+
 .task-filters {
   display: flex;
   gap: 10px;
@@ -142,75 +232,18 @@ nav a {
   cursor: pointer;
 }
 
+.task-filters button:hover {
+  border-color: #2563eb;
+}
+
 .task-filters button.active {
   background: #2563eb;
   color: white;
-}
-.task-item small {
-  display: block;
-  margin-top: 4px;
-  color: #6b7280;
-  font-size: 13px;
-}
-.timetable-form {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  margin-top: 30px;
+  border-color: #2563eb;
 }
 
-.timetable-form input,
-.timetable-form select {
-  padding: 12px;
-  border: 1px solid #d1d5db;
-  border-radius: 8px;
-  font-size: 16px;
-}
+/* Resources */
 
-.timetable-form button {
-  padding: 12px 20px;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  background: #2563eb;
-  color: white;
-  font-size: 16px;
-}
-
-.timetable {
-  margin-top: 40px;
-  background: white;
-  padding: 25px;
-  border-radius: 12px;
-  border: 1px solid #e5e7eb;
-}
-
-.timetable-item {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  padding: 15px 0;
-  border-bottom: 1px solid #eee;
-}
-
-.timetable-item h3,
-.timetable-item p {
-  margin: 0 0 4px;
-}
-
-.timetable-item small {
-  color: #6b7280;
-}
-
-.timetable-item button {
-  margin-left: auto;
-  border: none;
-  background: #ef4444;
-  color: white;
-  padding: 7px 12px;
-  border-radius: 6px;
-  cursor: pointer;
-}
 .resource-form {
   display: flex;
   gap: 10px;
@@ -222,16 +255,6 @@ nav a {
   padding: 12px;
   border: 1px solid #d1d5db;
   border-radius: 8px;
-  font-size: 16px;
-}
-
-.resource-form button {
-  padding: 12px 20px;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  background: #2563eb;
-  color: white;
   font-size: 16px;
 }
 
@@ -259,17 +282,156 @@ nav a {
   border-bottom: 1px solid #eee;
 }
 
-.resource-item h3,
-.resource-item p {
-  margin: 0 0 5px;
+.resource-item:last-child {
+  border-bottom: none;
+}
+
+.resource-item h3 {
+  margin: 0 0 7px;
+}
+
+.resource-item a {
+  color: #2563eb;
+  text-decoration: none;
+}
+
+.resource-item a:hover {
+  text-decoration: underline;
 }
 
 .resource-item button {
   margin-left: auto;
-  border: none;
-  background: #ef4444;
-  color: white;
-  padding: 7px 12px;
-  border-radius: 6px;
-  cursor: pointer;
+}
+
+/* Timetable */
+
+.timetable-form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.timetable-form input,
+.timetable-form select {
+  padding: 12px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  font-size: 16px;
+}
+
+.timetable-form input:first-child {
+  flex: 1;
+}
+
+.timetable {
+  margin-top: 40px;
+  background: white;
+  padding: 25px;
+  border-radius: 12px;
+  border: 1px solid #e5e7eb;
+}
+
+.timetable-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 15px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.timetable-item:last-child {
+  border-bottom: none;
+}
+
+.timetable-item h3 {
+  margin: 0 0 5px;
+}
+
+.timetable-item p {
+  margin: 0 0 5px;
+}
+
+.timetable-item small {
+  color: #6b7280;
+}
+
+.timetable-item button {
+  margin-left: auto;
+}
+
+/* Empty state */
+
+.empty-state {
+  color: #6b7280;
+  text-align: center;
+  padding: 25px 0;
+}
+
+/* Mobile */
+
+@media (max-width: 700px) {
+
+  .navbar {
+    flex-direction: column;
+    gap: 15px;
+    padding: 20px;
+  }
+
+  nav {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+  }
+
+  .main-content {
+    padding: 30px 15px;
+  }
+
+  .stats {
+    grid-template-columns: 1fr;
+  }
+
+  .add-task {
+    flex-wrap: wrap;
+  }
+
+  .add-task input,
+  .add-task input[type="date"] {
+    width: 100%;
+    flex: 1 1 100%;
+  }
+
+  .add-task button {
+    width: 100%;
+  }
+
+  .resource-form {
+    flex-wrap: wrap;
+  }
+
+  .resource-form input {
+    width: 100%;
+    flex: 1 1 100%;
+  }
+
+  .resource-form button {
+    width: 100%;
+  }
+
+  .timetable-form {
+    flex-direction: column;
+  }
+
+  .timetable-form input,
+  .timetable-form select,
+  .timetable-form button {
+    width: 100%;
+  }
+
+  .task-item,
+  .resource-item,
+  .timetable-item {
+    align-items: flex-start;
+  }
 }

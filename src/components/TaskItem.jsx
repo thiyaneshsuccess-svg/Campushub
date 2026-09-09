@@ -1,8 +1,11 @@
 function TaskItem({ task, toggleTask, deleteTask }) {
   return (
     <div
-      className={`task-item ${task.completed ? 'completed' : ''}`}
+      className={`task-item ${
+        task.completed ? 'completed' : ''
+      }`}
     >
+
       <button
         className="task-checkbox"
         onClick={() => toggleTask(task.id)}
@@ -10,12 +13,16 @@ function TaskItem({ task, toggleTask, deleteTask }) {
         {task.completed ? '☑' : '□'}
       </button>
 
-      <div>
+      <div className="task-content">
+
         <p>{task.title}</p>
 
         {task.dueDate && (
-          <small>Due: {task.dueDate}</small>
+          <small>
+            Due: {task.dueDate}
+          </small>
         )}
+
       </div>
 
       <button
@@ -24,6 +31,7 @@ function TaskItem({ task, toggleTask, deleteTask }) {
       >
         Delete
       </button>
+
     </div>
   )
 }

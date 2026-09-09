@@ -13,16 +13,21 @@ function TimetableForm({
 }) {
   return (
     <section className="timetable-form">
+
       <input
         type="text"
         placeholder="Subject"
         value={newSubject}
-        onChange={(event) => setNewSubject(event.target.value)}
+        onChange={(event) =>
+          setNewSubject(event.target.value)
+        }
       />
 
       <select
         value={newDay}
-        onChange={(event) => setNewDay(event.target.value)}
+        onChange={(event) =>
+          setNewDay(event.target.value)
+        }
       >
         <option value="">Select Day</option>
         <option value="Monday">Monday</option>
@@ -36,25 +41,32 @@ function TimetableForm({
       <input
         type="time"
         value={newStartTime}
-        onChange={(event) => setNewStartTime(event.target.value)}
+        onChange={(event) =>
+          setNewStartTime(event.target.value)
+        }
       />
 
       <input
         type="time"
         value={newEndTime}
-        onChange={(event) => setNewEndTime(event.target.value)}
+        onChange={(event) =>
+          setNewEndTime(event.target.value)
+        }
       />
 
       <input
         type="text"
         placeholder="Room"
         value={newRoom}
-        onChange={(event) => setNewRoom(event.target.value)}
+        onChange={(event) =>
+          setNewRoom(event.target.value)
+        }
       />
 
       <button onClick={addClass}>
         Add Class
       </button>
+
     </section>
   )
 }
