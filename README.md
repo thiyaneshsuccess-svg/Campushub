@@ -74,3 +74,6 @@ npm run dev
 ## Purpose
 
 This project was created to demonstrate practical understanding of fundamental web development and React concepts through a functional student-focused application.
+
+
+#DEMO VIDEO FOR REFERENCE:https://youtu.be/4dKfjNSm4h4
